@@ -4,212 +4,386 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | HaVaNa Shop</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="https://cdn.emailjs.com/sdk/3.2.0/email.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="/site-polish.css">
     <script defer src="/site-language.js"></script>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <title>HaVaNa Shop|Home</title>
 
 </head>
 
 <body>
-    <div class="login-container" id="loginContainer">
-        <div class="login-header">
-            <h1>Welcome To HaVaNa Shop</h1>
-            <p>Sign in to access your account</p>
+    <!-- Navbar Start -->
+    <nav class="nav">
+        <div class="nav-container">
+
+
+            <div class="logo">
+                <a href="#Home">HaVaNa Shop</a>
+            </div>
+            <ul class="nav-links">
+                <li><i class="fa-solid fa-house"></i><a href="#Home">Home</a></li>
+                <li><i class="fa-solid fa-shop"></i><a href="/links/Shop/shop.html">SHOP</a></li>
+                <li><i class="fa-solid fa-shirt"></i><a href="/links/T-Sheirts/t-shirts.html">T-SHIRTS</a></li>
+                <li><i class="fa-solid fa-shirt"></i><a href="/links/Hoodies/hodies.html">HOODIES</a></li>
+                <li><i class="fa-solid fa-dollar-sign"></i><a href="#discount">GET offer</a></li>
+                <li><i class="fa-solid fa-phone"></i><a href="/links/Contact/contact.html">Contact</a></li>
+                <ul class="links">
+                    <li>
+                        <a href="/links/cart/cart.html" class="cart-icon"> <i class="fa-solid fa-cart-shopping"></i> <span id="cart-count">0</span> </a> <div id="guestLinks"> <a href="/links/Login/login.html" class="login-btn"> <i class="fa-solid fa-user"></i> Login </a> </div> <div id="userLinks" class="user-menu" style="display:none;"> <a href="/links/dashbboard/dashboard.html" class="user-profile"> <i class="fa-solid fa-user"></i> <span id="navUserName"></span> </a> <a href="#" id="logoutHome" class="logout-btn"> <i class="fa-solid fa-right-from-bracket"></i> </a>
+
+                    </li>
+                </ul>
+            </ul>
         </div>
-
-        <form>
-            <div class="input-group">
-                <input type="email" id="loginEmail" placeholder="Email Address" required>
-                <i class="fas fa-envelope"></i>
+    </nav>
+    <!-- Hero Section -->
+    <section id="Home" class="hero ">
+        <img class="hero-background-img " src="/img/back.png " alt="photography background ">
+        <div class="hero-content ">
+            <h1 class="hero-title ">Elevate Your Look. Own Your Style.</h1>
+            <p class="hero-subtitle ">"Discover a smoother, smarter shopping experience designed around your needs. We bring you top-quality products, fast service, and a seamless journey from start to finish. Find everything you want in one place—because you deserve the best.
+                "
+            </p>
+            <div class="hero-buttons ">
+                <a href="#SHOP" class="btn btn-primary "><i class="fa-solid fa-cart-shopping "></i>SHOPING NOW</a>
+                <a href="/links/Contact/contact.html" class="btn btn-secondary "><i class="fa-solid fa-phone "></i>CONTACT US</a>
             </div>
+            <div class="hero-icons ">
 
-            <div class="input-group">
-                <input type="password" id="loginPassword" placeholder="Password" required>
-                <i class="fas fa-lock"></i>
+
             </div>
-
-            <div class="options">
-                <label class="remember">
-                    <input type="checkbox"> Remember me
-                </label>
-                <a href="#" class="forgot-password" id="forgotPasswordLink">Forgot Password?</a>
-            </div>
-
-
-            <div id="errorMessage" class="error-message" style="display: none;">
-                <i class="fas fa-exclamation-circle"></i>
-                <span id="errorText"></span>
-            </div>
-
-            <button type="submit" class="login-button">LOGIN</button>
-
-            <style>
-                .message {
-                    padding: 12px 20px;
-                    border-radius: 8px;
-                    margin: 10px 0;
-                    display: flex;
-                    align-items: center;
-                    font-size: 14px;
-                    font-weight: 500;
-                    transition: all 0.3s ease;
-                    opacity: 0.95;
-                    border: 1px solid transparent;
-                }
-                
-                .message i {
-                    margin-right: 10px;
-                    font-size: 18px;
-                }
-                
-                .error-message {
-                    background: rgba(255, 76, 48, 0.1);
-                    color: #ff4c30;
-                    padding: 14px 18px;
-                    border-radius: 12px;
-                    margin: 0 0 20px 0;
-                    display: flex;
-                    align-items: center;
-                    gap: 12px;
-                    font-size: 14px;
-                    border: 2px solid transparent;
-                    animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1), pulseBorder 2s infinite;
-                    box-shadow: 0 2px 15px rgba(255, 76, 48, 0.1);
-                    backdrop-filter: blur(4px);
-                    transition: all 0.3s ease;
-                }
-                
-                .error-message i {
-                    font-size: 20px;
-                    color: #ff4c30;
-                    flex-shrink: 0;
-                }
-                
-                @keyframes slideDown {
-                    from {
-                        opacity: 0;
-                        transform: translateY(-15px);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0);
-                    }
-                }
-                
-                @keyframes pulseBorder {
-                    0% {
-                        border-color: rgba(255, 76, 48, 0.2);
-                        box-shadow: 0 0 0 0 rgba(255, 76, 48, 0.7);
-                    }
-                    70% {
-                        border-color: rgba(255, 76, 48, 0.1);
-                        box-shadow: 0 0 0 6px rgba(255, 76, 48, 0);
-                    }
-                    100% {
-                        border-color: rgba(255, 76, 48, 0.2);
-                        box-shadow: 0 0 0 0 rgba(255, 76, 48, 0);
-                    }
-                }
-                
-                .error-message.fade-out {
-                    animation: fadeOut 0.5s ease-out forwards, slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-                }
-                
-                @keyframes fadeOut {
-                    to {
-                        opacity: 0;
-                    }
-                }
-                
-                @keyframes slideUp {
-                    to {
-                        transform: translateY(-10px);
-                    }
-                }
-            </style>
-        </form>
-
-
-
-        <div class="signup-link">
-            <p>Don't have an account? <a href="#" id="showSignup">Create Account</a></p>
         </div>
+    </section>
+    <!-- quality -->
+    <section class="quality ">
+        <h2 class="quality-title ">Why Choose HaVaNa Shop?</h2>
+        <div class="quality-features ">
+            <div class="feature ">
+                <i class="fa-solid fa-shield-halved feature-icon "></i>
+                <h3 class="feature-title ">Premium Quality</h3>
+                <p class="feature-description ">We source only the finest materials to ensure our products meet the highest standards.</p>
+            </div>
+            <div class="feature ">
+                <i class="fa-solid fa-truck-fast feature-icon "></i>
+                <h3 class="feature-title ">Fast Shipping</h3>
+                <p class="feature-description ">Enjoy quick and reliable delivery right to your doorstep.</p>
+            </div>
+            <div class="feature ">
+                <i class="fa-solid fa-headset feature-icon "></i>
+                <h3 class="feature-title ">24/7 Support</h3>
+                <p class="feature-description ">Our dedicated support team is here to assist you anytime, anywhere.</p>
+            </div>
+        </div>
+    </section>
+    <!--new projects-->
+    <section id="SHOP" class="section projects-section ">
+        <div class="container ">
+            <h1 class="section-title ">New Arrivals</h1>
+            <div class="projects-grid ">
+                <article class="project-card" data-name="سويت شيرت🔥" data-price="500" data-image="https://i.ibb.co/W49Gd2Rf/d1.jpg" data-description="High-quality hoodie made from premium cotton">
+
+                    <div class="project-thumbnail">
+                        <img alt="سويت شيرت" src="https://i.ibb.co/W49Gd2Rf/d1.jpg" />
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-label">سويت شيرت🔥</h3>
+                        <p class="project-description">Price | 500 EGP</p>
+
+                        <!-- ADD TO CART -->
+        <button class="project-link add-to-cart">
+            🛒+
+        </button>
+
+        <!-- BUY NOW -->
+        <button class="project-link buy-now">
+            Buy Now ⚡
+        </button>
+
+                    </div>
+                </article>
+
+                <article class="project-card"
+    data-name="سويت شيرت🔥"
+    data-price="500"
+    data-image="https://i.ibb.co/BVwcPJqc/Men-s-Motorcycle-themed-Hooded-Sweatshirt-Print-Motorcycle-Rider-Brown-white-Casual-Pullover-H.jpg"
+    data-description="High-quality hoodie made from premium cotton">
+
+    <div class="project-thumbnail">
+        <img src="https://i.ibb.co/BVwcPJqc/Men-s-Motorcycle-themed-Hooded-Sweatshirt-Print-Motorcycle-Rider-Brown-white-Casual-Pullover-H.jpg" />
     </div>
 
-    <div class="reset-password-container" id="resetPasswordContainer" style="display: none;">
-        <div class="reset-password-header">
-            <h1>Forgot Password</h1>
-            <p>Enter your email to reset your password</p>
-        </div>
+    <div class="project-content">
 
-        <form id="resetPasswordForm" onsubmit="sendResetCode(event)">
-            <div class="input-group">
-                <input type="email" id="resetEmail" name="email" placeholder="Email Address" required>
-                <i class="fas fa-envelope"></i>
-            </div>
-            <button type="submit" class="login-button">Send Reset Link</button>
-            <div id="resetMessage" class="message" style="display: none; margin-top: 15px;">
-                <i class="fas" id="messageIcon"></i>
-                <span id="resetMessageText"></span>
-            </div>
-            <div class="back-to-login">
-                <a href="#" id="backToLogin">
-                    <i class="fas fa-arrow-left"></i> Back to Login
-                </a>
-            </div>
-        </form>
+        <h3 class="project-label">سويت شيرت🔥</h3>
+        <p class="project-description">Price | 500 EGP</p>
+
+        <!-- ADD TO CART -->
+        <button class="project-link add-to-cart">
+            🛒+
+        </button>
+
+        <!-- BUY NOW -->
+        <button class="project-link buy-now">
+            Buy Now ⚡
+        </button>
+
     </div>
+</article>
 
-    <div class="Sign-Up-container" id="signupContainer" style="display: none;">
-        <div class="Sign-Up-header">
-            <h1>Welcome</h1>
-            <p>Sign Up to Access Your New Account</p>
+                <article class="project-card" data-name="سويت شيرت🔥" data-price="500" data-image="https://i.ibb.co/21HqPVTN/image.jpg" data-description="High-quality hoodie made from premium cotton">
+
+                    <div class="project-thumbnail">
+                        <img alt="سويت شيرت" src="https://i.ibb.co/21HqPVTN/image.jpg" />
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-label">سويت شيرت🔥</h3>
+                        <p class="project-description">Price | 500 EGP</p>
+
+                        <!-- ADD TO CART -->
+                        <button class="project-link add-to-cart">
+                            🛒+
+                        </button>
+
+                        <!-- BUY NOW -->
+                        <button class="project-link buy-now">
+                            Buy Now ⚡
+                        </button>
+
+                        
+
+                    </div>
+                </article>
+                <article class="project-card" data-name="سويت شيرت🔥" data-price="500" data-image="https://i.ibb.co/4wmLp0bR/Men-s-Motorcycle-Pattern-Hoodie-CHARGED-Design-Front-And-Back-Printed-Pullover-Sweatshirt-Casual.jpg" data-description="High-quality hoodie made from premium cotton">
+
+                    <div class="project-thumbnail">
+                        <img alt="سويت شيرت" src="https://i.ibb.co/4wmLp0bR/Men-s-Motorcycle-Pattern-Hoodie-CHARGED-Design-Front-And-Back-Printed-Pullover-Sweatshirt-Casual.jpg" />
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-label">سويت شيرت🔥</h3>
+                        <p class="project-description">Price | 500 EGP</p>
+
+                        <!-- ADD TO CART -->
+                        <button class="project-link add-to-cart">
+                            🛒+
+                        </button>
+
+                        <!-- BUY NOW -->
+                        <button class="project-link buy-now">
+                            Buy Now ⚡
+                        </button>
+
+
+                        
+                    </div>
+                </article>
+                <article class="project-card" data-name="سويت شيرت🔥" data-price="500" data-image="https://i.ibb.co/8D4Bt7Q6/download-11.jpg" data-description="High-quality hoodie made from premium cotton">
+
+                    <div class="project-thumbnail">
+                        <img alt="سويت شيرت" src="https://i.ibb.co/8D4Bt7Q6/download-11.jpg" />
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-label">سويت شيرت🔥</h3>
+                        <p class="project-description">Price | 500 EGP</p>
+
+                        <!-- ADD TO CART -->
+                        <button class="project-link add-to-cart">
+                            🛒+
+                        </button>
+
+                        <!-- BUY NOW -->
+                        <button class="project-link buy-now">
+                            Buy Now ⚡
+                        </button>
+
+                        
+                    </div>
+                </article>
+                <article class="project-card" data-name="سويت شيرت🔥" data-price="500" data-image="https://i.ibb.co/b5KS5zcM/d4.jpg" data-description="High-quality hoodie made from premium cotton">
+
+                    <div class="project-thumbnail">
+                        <img alt="سويت شيرت" src="https://i.ibb.co/b5KS5zcM/d4.jpg" />
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-label">سويت شيرت🔥</h3>
+                        <p class="project-description">Price | 500 EGP</p>
+
+                        <!-- ADD TO CART -->
+                        <button class="project-link add-to-cart">
+                            🛒+
+                        </button>
+
+                        <!-- BUY NOW -->
+                        <button class="project-link buy-now">
+                            Buy Now ⚡
+                        </button>
+
+                       
+
+                    </div>
+                </article>
+                <article class="project-card" data-name="سويت شيرت🔥" data-price="500" data-image="https://i.ibb.co/235mD08M/14-50.jpg" data-description="High-quality hoodie made from premium cotton">
+
+                    <div class="project-thumbnail">
+                        <img alt="سويت شيرت" src="https://i.ibb.co/235mD08M/14-50.jpg" />
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-label">سويت شيرت🔥</h3>
+                        <p class="project-description">Price | 500 EGP</p>
+
+                        <!-- ADD TO CART -->
+                        <button class="project-link add-to-cart">
+                            🛒+
+                        </button>
+
+                        <!-- BUY NOW -->
+                        <button class="project-link buy-now">
+                            Buy Now ⚡
+                        </button>
+
+                        
+
+                    </div>
+                </article>
+                <article class="project-card" data-name="سويت شيرت🔥" data-price="500" data-image="https://i.ibb.co/rRBLj5dz/il-fullxfull-3528107493-jg4c.webp" data-description="High-quality hoodie made from premium cotton">
+
+                    <div class="project-thumbnail">
+                        <img alt="سويت شيرت" src="https://i.ibb.co/rRBLj5dz/il-fullxfull-3528107493-jg4c.webp" />
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-label">سويت شيرت🔥</h3>
+                        <p class="project-description">Price | 500 EGP</p>
+
+                        <!-- ADD TO CART -->
+                        <button class="project-link add-to-cart">
+                            🛒+
+                        </button>
+
+                        <!-- BUY NOW -->
+                        <button class="project-link buy-now">
+                            Buy Now ⚡
+                        </button>
+
+                       
+
+                    </div>
+                </article>
+                <article class="project-card" data-name="سويت شيرت🔥" data-price="500" data-image="https://i.pinimg.com/736x/8c/89/ab/8c89ab821ffd2e9b0fc0db16b730c595.jpg" data-description="High-quality hoodie made from premium cotton">
+
+                    <div class="project-thumbnail">
+                        <img alt="سويت شيرت" src="https://i.pinimg.com/736x/8c/89/ab/8c89ab821ffd2e9b0fc0db16b730c595.jpg" />
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-label">سويت شيرت🔥</h3>
+                        <p class="project-description">Price | 500 EGP</p>
+
+                        <!-- ADD TO CART -->
+                        <button class="project-link add-to-cart">
+                            🛒+
+                        </button>
+
+                        <!-- BUY NOW -->
+                        <button class="project-link buy-now">
+                            Buy Now ⚡
+                        </button>
+
+
+
+                    </div>
+                </article>
+                <article class="project-card" data-name="سويت شيرت🔥" data-price="500" data-image="https://i.ibb.co/TxR2vYcP/download-2.jpg" data-description="High-quality hoodie made from premium cotton">
+
+                    <div class="project-thumbnail">
+                        <img alt="سويت شيرت" src="https://i.ibb.co/TxR2vYcP/download-2.jpg" />
+                    </div>
+
+                    <div class="project-content">
+                        <h3 class="project-label">سويت شيرت🔥</h3>
+                        <p class="project-description">Price | 500 EGP</p>
+
+                        <!-- ADD TO CART -->
+                        <button class="project-link add-to-cart">
+                            🛒+
+                        </button>
+
+                        <!-- BUY NOW -->
+                        <button class="project-link buy-now">
+                            Buy Now ⚡
+                        </button>
+
+                        
+
+                    </div>
+                </article>
+                <a href="/links/Shop/shop.html" class="btn-product "><i class="fa-solid fa-box "></i>View All Products</a>
+            </div>
         </div>
-        <form>
-            <div class="input-group">
-                <input id="signupDisplayName" type="text" placeholder="Display name" autocomplete="name" required>
+    </section>
+    <!-- discount -->
+    <section class="discount" id="discount">
+        <div class="discount-content">
+            <h2 class="discount-title">Limited Time Offer!</h2>
+            <p class="discount-subtitle">Subscribe to our newsletter for exclusive deals and updates.</p>
+            <i class="fa-solid fa-envelope discount-icon"></i>
+            <p class="discount-text">Enter your email address to receive a discount code for up to 50% off.</p>
 
+            <form id="discountForm">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Get Discount</button>
+            </form>
+
+            <div id="discountResult" style="margin-top:15px; font-weight:bold;"></div>
+        </div>
+    </section>
+    <!--footer-->
+    <footer class="footer ">
+        <div class="footer-container ">
+            <div class="footer-logo ">
+                <a href="#Home">HaVaNa Shop</a>
             </div>
-
-            <div class="input-group">
-                <input id="signupUsername" type="text" placeholder="@user_name" autocomplete="username" required>
-
+            <div class="footer-social ">
+                <a href="# " target="_blank " rel="noopener noreferrer " aria-label="facebook "><i class="fa-brands fa-facebook "></i></a>
+                <a href="# " target="_blank " rel="noopener noreferrer " aria-label="whatsapp "><i class="fa-brands fa-whatsapp "></i></a>
+                <a href="# " target="_blank " rel="noopener noreferrer " aria-label="Instagram "><i class="fa-brands fa-instagram "></i></a>
             </div>
+            <p class="footer-text ">&copy; 2023 HaVaNa Shop. All rights reserved.</p>
+        </div>
+    </footer>
 
-            <div class="input-group">
-                <input id="signupEmail" type="email" placeholder="Email Address" autocomplete="email" required>
-
-            </div>
-
-            <div class="input-group">
-                <input id="signupPassword" type="password" placeholder="Password" autocomplete="new-password" required>
-
-            </div>
-
-            <div class="input-group">
-                <input id="confirmPassword" type="password" placeholder="Confirm password" autocomplete="new-password" required>
-
-            </div>
-            <button type="submit" class="login-button">Create</button>
+    <script type="module" src="bot.js"></script>
 
 
-            <div class="back-to-login">
 
-                <p><a href="#" id="backToLogin">Back to Login</a></p>
-            </div>
-        </form>
-    </div>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {},
+            Tawk_LoadStart = new Date();
+        (function() {
+            var s1 = document.createElement("script"),
+                s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/6939a99f0d37d419822153f9/1jc4jt5nl';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
 
-    <script src="script.js"></script>
-
+    <script type="module" src="script.js"></script>
 
 </body>
+
 
 </html>
