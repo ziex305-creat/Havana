@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // إذا المستخدم غير مسجّل دخول
     if (!user) {
         alert("يرجى تسجيل الدخول أولاً");
-        window.location.href = "/links/Login/index.html";
+        window.location.href = "/links/Login/login.html";
     }
 
     // عرض البيانات
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function() {
     // تسجيل خروج
     document.getElementById("logoutBtn").addEventListener("click", function() {
         localStorage.removeItem("loggedInUser");
-        window.location.href = "/links/Login/index.html";
+        window.location.href = "/links/Login/login.html";
     });
 
     // عرض/إخفاء نموذج تعديل البيانات

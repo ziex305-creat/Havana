@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    // ================= USER =================
+    // ================= USER + CART KEY =================
     const user = JSON.parse(localStorage.getItem("loggedInUser"));
     const legacyCartKey = "cart_" + (user ? user.email : "guest");
     let cart = JSON.parse(localStorage.getItem("cart") || localStorage.getItem(legacyCartKey) || "[]");
@@ -8,7 +8,14 @@ document.addEventListener("DOMContentLoaded", () => {
         localStorage.setItem("cart", JSON.stringify(cart));
     }
 
-    // ================= SAVE CART =================
+    const container = document.getElementById("cart-container");
+    const totalElem = document.getElementById("total");
+
+    const finalPriceEl = document.getElementById("finalPrice");
+    const discountInput = document.getElementById("discountInput");
+    const applyDiscountBtn = document.getElementById("applyDiscountBtn");
+
+    // ================= SAVE =================
     function saveCart() {
         localStorage.setItem("cart", JSON.stringify(cart));
     }
@@ -20,152 +27,146 @@ document.addEventListener("DOMContentLoaded", () => {
         if (el) el.innerText = count;
     }
 
-    updateCartCount();
+    // ================= DISPLAY CART =================
+    function displayCart() {
+        container.innerHTML = "";
 
-    // ================= TOAST =================
-    function toast(msg) {
-        const t = document.createElement("div");
-        t.innerText = msg;
+        if (cart.length === 0) {
+            container.innerHTML = "<p>Cart is empty</p>";
+            totalElem.innerText = "0";
+            return;
+        }
 
-        Object.assign(t.style, {
-            position: "fixed",
-            top: "10px",
-            right: "10px",
-            background: "#28a745",
-            color: "#fff",
-            padding: "10px 15px",
-            borderRadius: "6px",
-            zIndex: 9999
+        let total = 0;
+
+        cart.forEach((item, index) => {
+
+            total += item.price * item.qty;
+
+            const div = document.createElement("div");
+            div.className = "cart-item";
+
+            div.innerHTML = `
+                <img src="${item.image}" width="80">
+                <h3>${item.name}</h3>
+                <p>${item.price} EGP</p>
+
+                <button onclick="window.changeQty(${index}, -1)">-</button>
+                ${item.qty}
+                <button onclick="window.changeQty(${index}, 1)">+</button>
+
+                <button onclick="window.removeItem(${index})">Delete</button>
+            `;
+
+            container.appendChild(div);
         });
 
-        document.body.appendChild(t);
-        setTimeout(() => t.remove(), 2000);
+        totalElem.innerText = total;
     }
 
-    // ================= ADD TO CART =================
-    function addProduct(product) {
-        const exist = cart.find(item => item.name === product.name && item.image === product.image);
-        if (exist) exist.qty += 1;
-        else cart.push({ ...product, qty: 1 });
+    // ================= GLOBAL FUNCTIONS =================
+    window.removeItem = function(index) {
+        cart.splice(index, 1);
         saveCart();
+        displayCart();
         updateCartCount();
-    }
+    };
 
-    function productFromCard(card) {
-        return {
-            name: card.dataset.name,
-            price: Number(card.dataset.price),
-            image: card.dataset.image
-        };
-    }
+    window.changeQty = function(index, amount) {
+        cart[index].qty += amount;
 
-    document.querySelectorAll(".add-to-cart").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
+        if (cart[index].qty <= 0) {
+            cart.splice(index, 1);
+        }
 
-            const product = productFromCard(btn.closest(".project-card"));
-            addProduct(product);
-            toast("تمت الإضافة للسلة 🛒");
-        });
-    });
+        saveCart();
+        displayCart();
+        updateCartCount();
+    };
 
-    // ================= BUY NOW =================
-    document.querySelectorAll(".buy-now").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            e.preventDefault();
-            e.stopPropagation();
+    window.clearCart = function() {
+        cart = [];
+        localStorage.removeItem("cart");
+        displayCart();
+        updateCartCount();
+    };
 
-            const card = btn.closest(".project-card");
+    // ================= ORDER BUTTON =================
+    const orderBtn = document.querySelector(".empty-cart1");
 
-            const product = productFromCard(card);
-            addProduct(product);
+    if (orderBtn) {
+        orderBtn.addEventListener("click", () => {
+
+            if (cart.length === 0) {
+                alert("Cart is empty");
+                return;
+            }
+
             window.location.href = "/links/confirmatio order/order.html";
         });
-    });
-
-    // ================= VIEW PRODUCT =================
-    document.querySelectorAll(".view-product").forEach(btn => {
-        btn.addEventListener("click", (e) => {
-            e.stopPropagation();
-
-            const card = btn.closest(".project-card");
-
-            const product = {
-                name: card.dataset.name,
-                price: card.dataset.price,
-                image: card.dataset.image,
-                description: card.dataset.description || ""
-            };
-
-            localStorage.setItem("viewProduct", JSON.stringify(product));
-            window.location.href = "/links/show-project/show.html";
-        });
-    });
-
-    // ================= LOGIN UI =================
-    const guest = document.getElementById("guestLinks");
-    const userBox = document.getElementById("userLinks");
-    const nameBox = document.getElementById("navUserName");
-
-    if (user) {
-        if (guest) guest.style.display = "none";
-        if (userBox) userBox.style.display = "flex";
-        if (nameBox) nameBox.innerText = user.displayName;
-    } else {
-        if (guest) guest.style.display = "flex";
-        if (userBox) userBox.style.display = "none";
     }
 
-    // ================= LOGOUT =================
-    const logout = document.getElementById("logoutHome");
-    if (logout) {
-        logout.addEventListener("click", () => {
-            localStorage.removeItem("loggedInUser");
-            location.reload();
-        });
+    // ================= TOTAL + DISCOUNT =================
+    function calculateTotal() {
+        return cart.reduce((t, i) => t + i.price * i.qty, 0);
     }
 
-    // ================= DISCOUNT =================
-    const form = document.getElementById("discountForm");
-    const result = document.getElementById("discountResult");
+    if (applyDiscountBtn) {
+        applyDiscountBtn.addEventListener("click", () => {
 
-    function generateCode(len = 6) {
-        const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        let code = "";
-        for (let i = 0; i < len; i++) {
-            code += chars[Math.floor(Math.random() * chars.length)];
-        }
-        return code;
-    }
+            const user = JSON.parse(localStorage.getItem("loggedInUser"));
 
-    if (form) {
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-
-            const email = form.querySelector("input[name='email']").value.trim();
-
-            if (!user || user.email !== email) {
-                result.innerHTML = "⚠️ لازم تسجيل دخول بنفس الإيميل";
+            if (!user) {
+                finalPriceEl.innerText = "⚠️ لازم تسجل دخول";
                 return;
             }
 
-            if (user.discount?.code) {
-                result.innerHTML = `⚠️ لديك كود بالفعل: <b>${user.discount.code}</b>`;
+            const code = discountInput.value.trim();
+
+            const FIXED_CODE = "HAVANA20";
+            const FIXED_VALUE = 5;
+
+            let discount = 0;
+
+            if (code === FIXED_CODE) {
+                discount = FIXED_VALUE;
+            }
+
+            else if (user.discount?.code === code && !user.discount.used) {
+                discount = Number(user.discount.value);
+            }
+
+            else {
+                finalPriceEl.innerText = "❌ كود غير صحيح";
                 return;
             }
 
-            const discount = {
-                code: generateCode(),
-                value: Math.floor(Math.random() * 50) + 1,
-                used: false
-            };
+            const total = calculateTotal();
+            const discountAmount = total * discount / 100;
+            const final = total - discountAmount;
 
-            user.discount = discount;
-            localStorage.setItem("loggedInUser", JSON.stringify(user));
+            finalPriceEl.innerHTML = `
+                <p>قبل الخصم: ${total} EGP</p>
+                <p>الخصم: ${discountAmount.toFixed(0)} EGP</p>
+                <p>بعد الخصم: ${final.toFixed(0)} EGP</p>
+            `;
 
-            result.innerHTML = `🎉 كودك: <b>${discount.code}</b> (${discount.value}%)`;
+            localStorage.setItem("cartDiscount", JSON.stringify({
+                code,
+                value: discount
+            }));
+
+            applyDiscountBtn.style.display = "none";
+            discountInput.disabled = true;
+
+            if (user.discount?.code === code) {
+                user.discount.used = true;
+                localStorage.setItem("loggedInUser", JSON.stringify(user));
+            }
         });
     }
 
+    // ================= INIT =================
+    displayCart();
+    updateCartCount();
 });
