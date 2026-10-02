@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HaVaNa Support</title>
+    <link rel="stylesheet" href="bot.css">
+    <link rel="stylesheet" href="/site-polish.css">
+    <script defer src="/site-language.js"></script>
+</head>
+
+<body>
+
+    <div id="chatBtn">💬</div>
+
+    <div id="chatBox">
+        <div class="header"><span>HaVaNa Support</span></div>
+
+        <div class="messages" id="messages"></div>
+
+        <div class="quick-replies">
+            <button onclick="quickSend('تتبع الطلب')">تتبع الطلب</button>
+            <button onclick="quickSend('سياسة الشحن')">سياسة الشحن</button>
+            <button onclick="quickSend('الإرجاع')">الإرجاع</button>
+            <button onclick="quickSend('ترشيح منتجات')">ترشيح منتجات</button>
+            <button onclick="quickSend('تواصل مع الدعم الفني')">تواصل مع الدعم الفني</button>
+        </div>
+
+        <div class="input-area">
+            <input type="text" id="userInput" placeholder="اكتب رسالتك...">
+            <button id="sendBtn">➤</button>
+        </div>
+    </div>
+
+    <script src="bot.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,137 @@
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    body {
+        font-family: Tahoma, Arial;
+    }
+    /* زر الشات */
+    
+    #chatBtn {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background: #25D366;
+        color: white;
+        padding: 15px;
+        border-radius: 50%;
+        font-size: 22px;
+        cursor: pointer;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    #chatBox {
+        width: 330px;
+        height: 480px;
+        position: fixed;
+        bottom: 80px;
+        right: 20px;
+        background: #aaa9a9;
+        border-radius: 10px;
+        display: none;
+        border: 2px solid rgb(0, 0, 0);
+        border-radius: 8px;
+        flex-direction: column;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .header {
+        background: #176dbe;
+        color: rgb(255, 254, 254);
+        padding: 10px;
+        text-align: center;
+    }
+    
+    .messages {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+    }
+    
+    .message {
+        padding: 8px 12px;
+        border-radius: 7px;
+        margin: 8px 0;
+        max-width: 80%;
+    }
+    
+    .user {
+        background: #DCF8C6;
+        margin-left: auto;
+    }
+    
+    .bot {
+        background: white;
+    }
+    /* quick reply */
+    
+    .quick-replies {
+        display: flex;
+        overflow-x: auto;
+        padding: 5px;
+        background: #f7f7f7;
+    }
+    
+    .quick-replies button {
+        margin: 3px;
+        padding: 6px 10px;
+        border: none;
+        background: #e6e6e6;
+        border-radius: 20px;
+        cursor: pointer;
+    }
+    
+    .input-area {
+        display: flex;
+        padding: 8px;
+        background: #fff;
+        border-top: 2px solid #e0e0e0;
+    }
+    /* صندوق الكتابة */
+    
+    #userInput {
+        flex: 1;
+        padding: 10px 14px;
+        border-radius: 25px;
+        border: 1px solid #cfd8dc;
+        background: #f5fafe;
+        outline: none;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+    
+    #userInput:focus {
+        border-color: #1592ff;
+        background-color: #ffffff;
+    }
+    
+    #sendBtn {
+        background: linear-gradient(135deg, #1e88e5, #42a5f5);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        font-size: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.3s;
+        box-shadow: 0 5px 14px rgba(30, 136, 229, 0.45);
+    }
+    
+    #sendBtn:hover {
+        background: linear-gradient(135deg, #1565c0, #1e88e5);
+        box-shadow: 0 8px 22px rgba(30, 136, 229, 0.55);
+    }
+    
+    #sendBtn:active {
+        transform: scale(0.92);
+    }

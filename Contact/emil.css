@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: #333;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+.nav {
+    padding: 10px 0;
+    background-color: #000000;
+    border-bottom: 1px solid #000000;
+}
+
+.nav-container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    align-items: center;
+    color: #d8d7d7;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    color: rgb(228, 228, 228);
+}
+
+.nav-links li {
+    margin-left: 20px;
+    color: #00d4ff;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #c0bfbf;
+    font-size: 18px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #f1f3f5;
+    transform: scale(1.1);
+}
+
+
+/* Contact Section */
+
+.contact-section {
+    background-color: #000000;
+}
+
+.contact-form {
+    max-width: 700px;
+    margin: 0 auto 3rem auto;
+    background-color: #050505;
+    padding: 3rem;
+    border-radius: 12px;
+    border: 1px solid rgba(96, 28, 252, 0.2);
+    margin-top: 20px;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e0e0e0;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.875rem;
+    font-size: 1rem;
+    background-color: #1a1a2e;
+    border: 1px solid rgba(96, 28, 252, 0.3);
+    border-radius: 6px;
+    color: #e0e0e0;
+    font-family: inherit;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #601cfc;
+    box-shadow: 0 0 0 3px rgba(96, 28, 252, 0.2);
+}
+
+.checkbox-group,
+.radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+}
+
+.checkbox-label,
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    color: #d0d0d0;
+    font-size: 0.95rem;
+}
+
+.checkbox-label input,
+.radio-label input {
+    width: auto;
+    cursor: pointer;
+    accent-color: #601cfc;
+}
+
+.checkbox-label:hover,
+.radio-label:hover {
+    color: #ffffff;
+}
+
+.btn-submit {
+    width: 100%;
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    padding: 1.125rem;
+}
+
+.contact-direct {
+    text-align: center;
+    font-size: 1.05rem;
+    color: #b0b0b0;
+}
+
+.contact-direct a {
+    color: #601cfc;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.contact-direct a:hover {
+    color: #7a3dff;
+    text-decoration: underline;
+}
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    right: -300px;
+    /* يبدأ برا الشاشة */
+    background: #4caf50;
+    color: #fff;
+    padding: 16px 22px;
+    border-radius: 10px;
+    font-size: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.6s ease;
+    opacity: 0;
+    z-index: 9999;
+}
+
+
+/* لما النوتيفيكيشن يظهر */
+
+.toast.show {
+    right: 30px;
+    opacity: 1;
+}
+
+.section-title {
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+}
+
+
+/* شاشة متوسطة - تابلت (≤1024px) */
+
+@media (max-width: 1024px) {
+    .nav-container {
+        width: 90%;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .contact-form {
+        width: 90%;
+        padding: 2.5rem;
+        margin-top: 30px;
+    }
+    .form-row {
+        gap: 1rem;
+    }
+    .btn-submit {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+}
+
+
+/* شاشة صغيرة - موبايلات متوسطة وصغيرة (≤767px) */
+
+@media (max-width: 767px) {
+    body {
+        padding: 15px 10px;
+    }
+    .nav-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .logo a {
+        font-size: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+        width: 100%;
+    }
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    .nav-links li {
+        margin-left: 10px;
+        margin-bottom: 10px;
+    }
+    .nav-links a {
+        font-size: 16px;
+    }
+    .contact-form {
+        width: 95%;
+        padding: 2rem;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    .btn-submit {
+        padding: 1rem;
+        font-size: 1rem;
+    }
+}
+
+
+/* شاشة صغيرة جداً - موبايلات صغيرة جدًا (≤414px) */
+
+@media (max-width: 414px) {
+    .logo a {
+        font-size: 18px;
+    }
+    .nav-links a {
+        font-size: 14px;
+    }
+    .contact-form {
+        width: 100%;
+        padding: 1.5rem;
+        margin-top: 20px;
+    }
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.95rem;
+        padding: 0.75rem;
+    }
+    .btn-submit {
+        font-size: 0.95rem;
+        padding: 0.9rem;
+    }
+}

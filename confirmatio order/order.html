@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>تأكيد الطلب</title>
+    <link rel="stylesheet" href="order.css">
+    <link rel="stylesheet" href="/site-polish.css">
+    <script defer src="/site-language.js"></script>
+</head>
+
+<body>
+
+    <div class="container" id="orderForm">
+        <h2>بيانات الشحن</h2>
+
+        <label for="name">اسم العميل</label>
+        <input type="text" id="name" autocomplete="name" required>
+
+        <label for="phone">رقم الهاتف</label>
+        <input type="tel" id="phone" autocomplete="tel" required>
+
+        <label for="address">العنوان</label>
+        <input type="text" id="address" autocomplete="street-address" required>
+
+        <button type="button" id="confirmOrder">تأكيد الطلب</button>
+    </div>
+
+    <div class="invoice" id="invoiceBox">
+        <h2>تم تأكيد الطلب 🎉</h2>
+
+        <p><strong>رقم الطلب:</strong> <span id="orderID"></span></p>
+
+        <h3>تفاصيل العميل:</h3>
+        <p id="invName"></p>
+        <p id="invPhone"></p>
+        <p id="invAddress"></p>
+
+        <h3>تفاصيل المنتجات:</h3>
+        <div id="invProducts"></div>
+
+        <h3>الإجمالي:</h3>
+        <p id="invSubtotal"></p>
+        <p id="invDiscount"></p>
+        <p class="total" id="invTotal"></p>
+
+        <button id="downloadPDF">تحميل الفاتورة PDF</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../supabase-client.js"></script>
+    <script src="order.js"></script>
+</body>
+
+</html>
