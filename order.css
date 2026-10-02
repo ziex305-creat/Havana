@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Cairo", sans-serif;
+    background: #000;
+    color: #fff;
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* ================= NAV ================= */
+
+.nav {
+    padding: 15px 0;
+}
+
+.nav-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 800;
+    color: #fff;
+}
+
+/* ================= NAV LINKS ================= */
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 18px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ccc;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: #00d4ff;
+}
+
+/* ================= CART ================= */
+
+.cart-icon {
+    position: relative;
+}
+
+#cart-count {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    width: 18px;
+    height: 18px;
+    background: #ff3b30;
+    color: #fff;
+    font-size: 11px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ================= ORDER PAGE ================= */
+
+.order-container {
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+.order-container h1 {
+    text-align: center;
+    color: #00d4ff;
+    margin-bottom: 10px;
+}
+
+.thanks {
+    text-align: center;
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+/* ================= BOX ================= */
+
+.order-box,
+.container {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+
+/* ================= ITEMS ================= */
+
+.items li {
+    margin: 8px 0;
+    color: #ddd;
+}
+
+/* ================= TOTAL ================= */
+
+.total {
+    font-weight: 700;
+    font-size: 18px;
+    color: #ff3b30;
+    margin-top: 10px;
+}
+
+/* ================= FORM ================= */
+
+h2 {
+    text-align: center;
+    color: #00d4ff;
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: 600;
+    margin-top: 10px;
+    display: block;
+    color: #ccc;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.1);
+    background: #0f0f0f;
+    color: #fff;
+    outline: none;
+    transition: .3s;
+}
+
+input:focus,
+select:focus {
+    border-color: #00d4ff;
+    box-shadow: 0 0 0 2px rgba(0,212,255,.15);
+}
+
+/* ================= BUTTON ================= */
+
+button {
+    width: 100%;
+    padding: 14px;
+    margin-top: 20px;
+    background: linear-gradient(135deg,#00d4ff,#0066ff);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,212,255,.25);
+}
+
+/* ================= INVOICE ================= */
+
+.invoice {
+    display: none;
+    margin-top: 20px;
+}

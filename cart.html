@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HaVaNa Shop | Cart</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="/site-polish.css">
+    <script defer src="/site-language.js"></script>
+    
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+
+
+            <div class="logo">
+                <a href="/index.html#Home">HaVaNa Shop</a>
+            </div>
+            <ul class="nav-links">
+                <li><i class="fa-solid fa-house"></i><a href="../../index.html">Home</a></li>
+                <li><i class="fa-solid fa-shirt"></i><a href="/links/Hoodies/hodies.html">HOODIES</a></li>
+                <li><i class="fa-solid fa-shirt"></i><a href="/links/T-Sheirts/t-shirts.html">T-SHIRTS</a></li>
+                <li><i class="fa-solid fa-dollar-sign"></i><a href="/index.html#discount">GET offer</a></li>
+                <li><i class="fa-solid fa-phone"></i><a href="/links/Contact/contact.html">Contact</a></li>
+                <ul class="links">
+                    <li>
+                        <li id="guestLinks">
+    <a href="/links/Login/index.html">
+        <i class="fa-solid fa-right-to-bracket"></i>
+        Login
+    </a>
+</li>
+
+<li id="userLinks" style="display:none;">
+    <a href="/links/dashbboard/dashboard.html">
+        <i class="fa-solid fa-user"></i>
+        <span id="navUserName"></span>
+    </a>
+
+    <a href="#" id="logoutHome">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Logout
+    </a>
+</li>
+                        
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </nav>
+
+    <h1>Your Cart</h1>
+
+    <div id="cart-container"></div>
+
+    <h3>Total: <span id="total">0</span> EG</h3>
+    <!-- السعر قبل وبعد الخصم -->
+    <div class="final-price" id="finalPrice"></div>
+
+    <!-- DISCOUNT CODE -->
+    <div class="discount-box">
+        <input type="text" id="discountInput" placeholder="Enter discount code">
+        <button id="applyDiscountBtn">Apply</button>
+    </div>
+
+    <button class="empty-cart" onclick="clearCart()">Empty Cart</button>
+    <button class="empty-cart1">Order Now</button>
+
+    <div id="toast" class="toast">السلة فارغة!</div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

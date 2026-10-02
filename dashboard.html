@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - HaVaNa Shop</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="/site-polish.css">
+    <script defer src="/site-language.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- الشريط الجانبي -->
+        <nav class="sidebar">
+            <h2>HaVaNa Shop</h2>
+            <ul>
+                <li><a href="../../index.html"><i class="fa-solid fa-home"></i>الرئيسية</a></li>
+                <li><a href="#profileSection"><i class="fa-solid fa-user"></i>الملف الشخصي</a></li>
+                <li><a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i>تسجيل خروج</a></li>
+            </ul>
+            <button class="btn" id="editProfileBtn"><i class="fa-solid fa-pen"></i> تعديل البيانات</button>
+
+            <section id="editProfileForm" class="edit-form" style="display:none;">
+                <h3>تعديل البيانات</h3>
+                <input type="text" id="editDisplayName" placeholder="الاسم">
+                <input type="text" id="editUsername" placeholder="اسم المستخدم">
+                <input type="email" id="editEmail" placeholder="البريد الإلكتروني">
+                <button id="saveProfileBtn"><i class="fa-solid fa-save"></i> حفظ</button>
+            </section>
+        </nav>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="content">
+
+            <!-- ملف المستخدم -->
+            <section id="profileSection" class="section">
+                <h2>مرحبا، <span id="profileName">المستخدم</span></h2>
+                <div class="profile-pic-container">
+                    <img id="profilePic" src="default-profile.png" alt="صورة المستخدم">
+                    <input type="file" id="profilePicInput" accept="image/*">
+                </div>
+                <div class="user-info">
+                    <p><strong>اسم المستخدم:</strong> <span id="profileUsername">---</span></p>
+                    <p><strong>البريد الإلكتروني:</strong> <span id="profileEmail">---</span></p>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+
+</html>

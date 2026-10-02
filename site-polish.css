@@ -1,0 +1,459 @@
+:root {
+    --site-bg: #070b10;
+    --site-surface: #111923;
+    --site-surface-raised: #17232e;
+    --site-border: rgba(180, 216, 233, 0.14);
+    --site-text: #f3f7fa;
+    --site-muted: #a5b2bc;
+    --site-cyan: #00d4ff;
+    --site-blue: #1674e8;
+    --site-radius: 8px;
+    --site-transition: 180ms ease;
+}
+
+::selection {
+    color: #00121a;
+    background: var(--site-cyan);
+}
+
+body {
+    color: var(--site-text);
+}
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--site-text);
+    font-weight: 700;
+}
+
+.nav {
+    backdrop-filter: blur(12px);
+    border-bottom-color: var(--site-border);
+}
+
+.nav-links a,
+.logo a {
+    transition: color var(--site-transition);
+}
+
+.nav-links a:hover,
+.logo a:hover {
+    color: var(--site-cyan);
+}
+
+.projects-grid {
+    gap: clamp(1rem, 2vw, 1.5rem);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr));
+}
+
+button,
+.btn,
+.project-link,
+.login-btn,
+.logout-btn,
+.btn-product,
+.btn-discount,
+.buy-now-btn,
+.btn-submit,
+.login-button,
+.submit-button,
+.Create-button,
+.empty-cart,
+.empty-cart1,
+#sendBtn,
+.discount-box button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--site-border);
+    border-radius: var(--site-radius);
+    background: var(--site-surface-raised);
+    color: var(--site-text);
+    font: inherit;
+    font-weight: 650;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color var(--site-transition), border-color var(--site-transition),
+        box-shadow var(--site-transition), color var(--site-transition), transform var(--site-transition);
+}
+
+button:hover,
+.btn:hover,
+.project-link:hover,
+.login-btn:hover,
+.logout-btn:hover,
+.btn-product:hover,
+.btn-discount:hover,
+.buy-now-btn:hover,
+.btn-submit:hover,
+.login-button:hover,
+.submit-button:hover,
+.Create-button:hover,
+.empty-cart:hover,
+.empty-cart1:hover,
+#sendBtn:hover,
+.discount-box button:hover {
+    border-color: rgba(0, 212, 255, 0.65);
+    background-color: #20313d;
+    box-shadow: 0 7px 20px rgba(0, 0, 0, 0.24);
+    transform: translateY(-1px);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+    outline: 3px solid rgba(0, 212, 255, 0.72);
+    outline-offset: 3px;
+}
+
+button:disabled,
+button[aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.58;
+    transform: none;
+}
+
+.btn-primary,
+.btn-product,
+.btn-discount,
+.buy-now-btn,
+.buy-now,
+.btn-submit,
+.login-button,
+.submit-button,
+.Create-button,
+.login-btn,
+.empty-cart1,
+#sendBtn,
+a.project-link[href*="order.html"] {
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--site-cyan), var(--site-blue));
+    color: #03131c;
+    box-shadow: 0 5px 16px rgba(0, 153, 220, 0.16);
+}
+
+.btn-primary:hover,
+.btn-product:hover,
+.btn-discount:hover,
+.buy-now-btn:hover,
+.buy-now:hover,
+.btn-submit:hover,
+.login-button:hover,
+.submit-button:hover,
+.Create-button:hover,
+.login-btn:hover,
+.empty-cart1:hover,
+#sendBtn:hover,
+a.project-link[href*="order.html"]:hover {
+    border-color: transparent;
+    background: linear-gradient(135deg, #30ddff, #3189f1);
+    color: #03131c;
+    box-shadow: 0 8px 22px rgba(0, 153, 220, 0.24);
+}
+
+.logout-btn {
+    display: inline-flex;
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.language-toggle {
+    position: fixed;
+    left: 18px;
+    bottom: 18px;
+    z-index: 2000;
+    display: inline-flex;
+    min-width: 104px;
+    align-items: center;
+    justify-content: center;
+    border-color: transparent;
+    background: linear-gradient(135deg, var(--site-cyan), var(--site-blue));
+    color: #03131c;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.32);
+    direction: ltr;
+}
+
+.language-toggle:hover {
+    border-color: transparent;
+    background: linear-gradient(135deg, #30ddff, #3189f1);
+    color: #03131c;
+}
+
+.cart-icon {
+    border: 1px solid var(--site-border);
+    border-radius: var(--site-radius);
+    transition: background-color var(--site-transition), border-color var(--site-transition), transform var(--site-transition);
+}
+
+.cart-icon:hover {
+    border-color: rgba(0, 212, 255, 0.7);
+    background: var(--site-surface-raised);
+    color: var(--site-cyan);
+    transform: translateY(-1px);
+}
+
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
+    border: 1px solid var(--site-border);
+    border-radius: var(--site-radius);
+    background-color: #0d141c;
+    color: var(--site-text);
+    transition: border-color var(--site-transition), box-shadow var(--site-transition), background-color var(--site-transition);
+}
+
+input::placeholder,
+textarea::placeholder {
+    color: #82919d;
+    opacity: 1;
+}
+
+input:not([type="checkbox"]):not([type="radio"]):focus,
+textarea:focus,
+select:focus {
+    border-color: var(--site-cyan);
+    background-color: #101b25;
+    box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.12);
+}
+
+.project-card,
+.cart-item,
+.feature,
+.card,
+.data-container,
+.contact-card {
+    border: 1px solid var(--site-border);
+    border-radius: var(--site-radius);
+    background-color: var(--site-surface);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+    transition: border-color var(--site-transition), box-shadow var(--site-transition), transform var(--site-transition);
+}
+
+.project-card:hover,
+.cart-item:hover,
+.feature:hover,
+.data-container:hover,
+.contact-card:hover {
+    border-color: rgba(0, 212, 255, 0.42);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+}
+
+.project-card .project-thumbnail {
+    overflow: hidden;
+    border-radius: var(--site-radius) var(--site-radius) 0 0;
+}
+
+.project-card .project-thumbnail img {
+    transition: transform 260ms ease;
+}
+
+.project-card:hover .project-thumbnail img {
+    transform: scale(1.035);
+}
+
+.cart-item {
+    flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+    .language-toggle {
+        left: 12px;
+        bottom: 12px;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr));
+    }
+
+    .project-link,
+    .btn,
+    .btn-product,
+    .btn-discount,
+    .buy-now-btn,
+    .btn-submit,
+    .login-button,
+    .submit-button,
+    .Create-button {
+        min-height: 44px;
+    }
+
+    .cart-item {
+        gap: 0.75rem;
+        padding: 0.85rem;
+    }
+
+    .cart-item img {
+        flex: 0 0 76px;
+        width: 76px;
+        height: 76px;
+        object-fit: cover;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+button:active,
+.btn:active,
+.project-link:active,
+.login-btn:active,
+.btn-product:active,
+.btn-discount:active,
+.buy-now-btn:active,
+.btn-submit:active,
+.login-button:active,
+.submit-button:active,
+.Create-button:active,
+.empty-cart:active,
+.empty-cart1:active,
+#sendBtn:active {
+    box-shadow: none;
+    transform: translateY(0) scale(0.98);
+}
+
+.nav-container {
+    gap: 0.75rem;
+}
+
+.nav-links {
+    flex-wrap: wrap;
+    row-gap: 0.65rem;
+}
+
+.nav-toggle {
+    display: none;
+}
+
+@media (max-width: 767px) {
+    .nav-container {
+        position: relative;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        left: 0;
+        z-index: 1100;
+        display: none;
+        width: auto;
+        max-height: calc(100vh - 100px);
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.15rem;
+        overflow-y: auto;
+        padding: 0.65rem;
+        border: 1px solid var(--site-border);
+        border-radius: var(--site-radius);
+        background: #0b121a;
+        box-shadow: 0 16px 34px rgba(0, 0, 0, 0.42);
+    }
+
+    .nav-links.is-open {
+        display: flex;
+    }
+
+    .nav-toggle {
+        display: inline-flex;
+        width: 46px;
+        min-width: 46px;
+        height: 46px;
+        min-height: 46px;
+        flex: 0 0 46px;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+        padding: 0;
+        border-color: var(--site-border);
+        background: var(--site-surface);
+        color: var(--site-text);
+    }
+
+    .nav-toggle span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        border-radius: 2px;
+        background: currentColor;
+        transition: transform var(--site-transition), opacity var(--site-transition);
+    }
+
+    .nav-toggle.is-open span:first-child {
+        transform: translateY(7px) rotate(45deg);
+    }
+
+    .nav-toggle.is-open span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .nav-toggle.is-open span:last-child {
+        transform: translateY(-7px) rotate(-45deg);
+    }
+
+    .nav-links > li {
+        display: flex;
+        width: 100%;
+        min-height: 42px;
+        flex: 0 0 auto;
+        justify-content: flex-start;
+        padding: 0.3rem 0.45rem;
+        border-bottom: 1px solid rgba(180, 216, 233, 0.08);
+    }
+
+    .nav-links a {
+        padding: 0.45rem 0.35rem;
+        font-size: 0.9rem;
+    }
+
+    .nav-links > .links {
+        display: flex;
+        width: 100%;
+        justify-content: flex-start;
+        padding: 0.45rem;
+        list-style: none;
+    }
+
+    .nav-links > .links > li {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .nav-links > .links #guestLinks,
+    .nav-links > .links #userLinks {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .project-card .project-link,
+    .project-card .btn-product {
+        min-width: 44px;
+    }
+}

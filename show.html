@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="show.css">
+    <link rel="stylesheet" href="/site-polish.css">
+    <script defer src="/site-language.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <title>HaVaNa Shop | SHOP</title>
+</head>
+
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+
+
+            <div class="logo">
+                <a href="/index.html#Home">HaVaNa Shop</a>
+            </div>
+            <ul class="nav-links">
+                <li><i class="fa-solid fa-house"></i><a href="../../index.html">Home</a></li>
+                <li><i class="fa-solid fa-shirt"></i><a href="/links/Hoodies/hodies.html">HOODIES</a></li>
+                <li><i class="fa-solid fa-shirt"></i><a href="/links/T-Sheirts/t-shirts.html">T-SHIRTS</a></li>
+                <li><i class="fa-solid fa-dollar-sign"></i><a href="/index.html#discount">GET offer</a></li>
+                <li><i class="fa-solid fa-phone"></i><a href="/links/Contact/contact.html">Contact</a></li>
+                <ul class="links">
+                    <li>
+                        <li id="guestLinks">
+    <a href="/links/Login/index.html">
+        <i class="fa-solid fa-right-to-bracket"></i>
+        Login
+    </a>
+</li>
+
+<li id="userLinks" style="display:none;">
+    <a href="/links/dashbboard/dashboard.html">
+        <i class="fa-solid fa-user"></i>
+        <span id="navUserName"></span>
+    </a>
+
+    <a href="#" id="logoutHome">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        Logout
+    </a>
+</li>
+                        
+                    </li>
+                </ul>
+            </ul>
+        </div>
+    </nav>
+    <div class="product-container">
+        <!-- LEFT IMAGES -->
+        <div class="product-images">
+            <img id="mainImage" src="" alt="Product Image" class="main-img">
+            <div class="thumbnail-list" id="thumbnailList">
+                <!-- الصور المصغرة سيتم إضافتها جافاسكريبت -->
+            </div>
+        </div>
+
+        <!-- RIGHT DETAILS -->
+        <div class="product-details">
+            <h1 class="product-title" id="productName"></h1>
+
+            <div class="price-container">
+                <div id="productPrice" class="price"></div>
+                <div id="originalPrice" class="original-price"></div>
+            </div>
+
+            <p class="product-description" id="productDesc"></p>
+
+            
+
+            <button class="buy-now-btn" id="buyNowBtn">
+                <i class="fa-solid fa-bolt"></i> Buy Now
+            </button>
+
+            <button type="button" onclick="resetToOriginal()" class="reset-image-btn">
+                Reset to Main Image
+            </button>
+
+            <!-- DISCOUNT CODE -->
+            <div class="discount-box">
+                <input type="text" id="discountInput" placeholder="Enter discount code">
+                <button id="applyDiscountBtn">Apply</button>
+            </div>
+
+            <div class="final-price" id="finalPrice"></div>
+        </div>
+    </div>
+
+    <script src="show.js"></script>
+</body>
+
+</html>

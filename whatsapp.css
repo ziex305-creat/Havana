@@ -1,0 +1,211 @@
+/* ================= RESET ================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #0a0a0a;
+    color: #fff;
+    line-height: 1.6;
+}
+
+/* ================= NAVBAR ================= */
+
+.nav {
+    padding: 15px 0;
+    background: rgba(10,10,10,.95);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.nav-container {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    transition: .3s;
+}
+
+.logo a:hover {
+    color: #00d4ff;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+    color: #00d4ff;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #cfcfcf;
+    font-size: 16px;
+    transition: .3s;
+}
+
+.nav-links a:hover {
+    color: #fff;
+}
+
+/* ================= CART ================= */
+
+.cart-icon {
+    position: relative;
+}
+
+#cart-count {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background: #ff3b30;
+    color: #fff;
+    width: 18px;
+    height: 18px;
+    font-size: 11px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #0a0a0a;
+}
+
+/* ================= CONTACT FORM ================= */
+
+.data-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 80px auto;
+    background: #111;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.5);
+    border: 1px solid rgba(255,255,255,.05);
+    transition: .3s;
+}
+
+.data-container:hover {
+    transform: translateY(-5px);
+}
+
+.data-container h2 {
+    text-align: center;
+    font-size: 22px;
+    margin-bottom: 20px;
+    color: #00d4ff;
+}
+
+/* ================= INPUTS ================= */
+
+.input-group input,
+.input-group textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 12px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.1);
+    background: #0a0a0a;
+    color: #fff;
+    outline: none;
+    transition: .3s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus {
+    border-color: #00d4ff;
+    box-shadow: 0 0 10px rgba(0,212,255,.2);
+}
+
+/* ================= BUTTON ================= */
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #00d4ff, #0066ff);
+    border: none;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 18px;
+    transition: .3s;
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(0,212,255,.25);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1024px) {
+    .nav-container {
+        width: 95%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .data-container {
+        width: 85%;
+        margin-top: 100px;
+    }
+}
+
+@media (max-width: 767px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .data-container {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 414px) {
+    .logo a {
+        font-size: 18px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .data-container {
+        width: 95%;
+        padding: 15px;
+    }
+}
